@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
 
 namespace ChallengesWithTestsMark8
 {
@@ -28,32 +30,40 @@ namespace ChallengesWithTestsMark8
 
         public double SumOfMinAndMax(IEnumerable<double> numbers)
         {
-            return numbers.Any() ? numbers.Min() + numbers.Max() : throw new ArgumentException("NO data");
-        }
+            if(numbers == null)
+            {  
+                return 0; 
+            }
+            if (numbers.Count() == 0)
+            {
+                return 0;
+            }
+            return numbers.Max() + numbers.Min();
 
+        }   
         public int GetLengthOfShortestString(string str1, string str2)
         {
-            throw new NotImplementedException();
+            return str1.Length < str2.Length ? str1.Length : str2.Length;
         }
 
         public int Sum(int[] numbers)
         {
-            throw new NotImplementedException();
+            return numbers != null ? numbers.Sum() : 0;
         }
 
         public int SumEvens(int[] numbers)
-        {
-            throw new NotImplementedException();
+        { 
+            return  numbers != null && numbers.Any(num => num % 2 == 0) ? numbers.Where(num => num % 2 == 0).Sum() : 0;    
         }
 
         public bool IsSumOdd(List<int> numbers)
         {
-            throw new NotImplementedException();
+            return numbers != null && numbers.Sum() % 2 != 0;
         }
 
         public long CountOfPositiveOddsBelowNumber(long number)
         {
-            throw new NotImplementedException();
+            return number <= 0 ? 0 : number / 2;
         }
     }
 }
