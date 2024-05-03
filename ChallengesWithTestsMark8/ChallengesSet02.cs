@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ChallengesWithTestsMark8
 {
@@ -22,12 +23,12 @@ namespace ChallengesWithTestsMark8
 
         public bool IsNumberOdd(int num)
         {
-            return num % 3 == 1 ? true : false;
+            return num % 2 != 0 ? true : false;
         }
 
         public double SumOfMinAndMax(IEnumerable<double> numbers)
         {
-            throw new NotImplementedException();
+            return numbers.Any() ? numbers.Min() + numbers.Max() : throw new ArgumentException("NO data");
         }
 
         public int GetLengthOfShortestString(string str1, string str2)
