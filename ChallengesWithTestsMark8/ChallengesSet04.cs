@@ -86,17 +86,48 @@ namespace ChallengesWithTestsMark8
 
         public bool CouldFormTriangle(int sideLength1, int sideLength2, int sideLength3)
         {
-            throw new NotImplementedException();
+            if (sideLength1 <= 0 || sideLength2 <= 0 || sideLength3 <= 0)
+            {
+                return false;
+            }
+            if (sideLength1 + sideLength2 > sideLength3 && sideLength1 + sideLength3 > sideLength2 && sideLength2 + sideLength3 > sideLength1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool IsStringANumber(string input)
         {
-            throw new NotImplementedException();
+            if(double.TryParse(input, out var number))
+            {
+                return true ;
+            }
+            else
+            {
+                return false ;
+            }
+
         }
 
         public bool MajorityOfElementsInArrayAreNull(object[] objs)
         {
-            throw new NotImplementedException();
+            if (objs == null)
+            {
+                throw new ArgumentNullException(nameof(objs));
+            }
+            int nullcount = 0;
+            foreach (var obj in objs)
+            {
+                if (obj == null)
+                {
+                    nullcount++;
+                }
+            }
+            return nullcount > objs.Length / 2;
         }
 
         public double AverageEvens(int[] numbers)
@@ -125,7 +156,15 @@ namespace ChallengesWithTestsMark8
 
         public int Factorial(int number)
         {
-            throw new NotImplementedException();
+            if (number < 0)
+            {
+               throw  new ArgumentOutOfRangeException(nameof(number));
+            }
+            if (number == 0)
+            {
+                return 1;
+            }
+            return number * Factorial(number - 1);
         }
     }
 }
